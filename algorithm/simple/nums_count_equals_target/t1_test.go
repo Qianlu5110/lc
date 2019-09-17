@@ -16,4 +16,9 @@ func Test_TwoSum(t *testing.T) {
 	target := 9
 	arrIndexs := TwoSum(nums, target)
 	fmt.Println(arrIndexs)
+
+	nums1 := []int{3, 3}
+	target1 := 6
+	arrIndexs1 := TwoSum(nums1, target1)
+	fmt.Println(arrIndexs1)
 }

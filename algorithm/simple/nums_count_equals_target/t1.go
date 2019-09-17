@@ -39,7 +39,7 @@ func TwoSum(nums []int, target int) []int {
 				if i == j || backOff[j] > target {
 					break
 				}
-				if backOff[i]+backOff[j] == target {
+				if backOff[i] != backOff[j] && backOff[i]+backOff[j] == target {
 					var1 = backOff[i]
 					var2 = backOff[j]
 				}
