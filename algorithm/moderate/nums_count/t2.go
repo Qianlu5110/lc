@@ -6,6 +6,8 @@
 
 package nums_count
 
+import "fmt"
+
 /**
 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
 
@@ -24,45 +26,54 @@ package nums_count
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	curr := new(ListNode)
+	dummyHead := new(ListNode)
+	endCarry := 0
 	carry := 0
 
-	leftChild := new(ListNode)
-	curr.Next = leftChild
-	for l1 != nil || l2 != nil {
+	i := 0
+	t1 := l1
+	t2 := l2
+	curr := dummyHead
+
+	for t1 != nil || t2 != nil {
+		i++
+		fmt.Println(i)
 		var x = 0
 		var y = 0
-		if l1 != nil {
-			x = l1.Val
+		if t1 != nil {
+			x = t1.Val
 		}
 
-		if l2 != nil {
-			y = l2.Val
+		if t2 != nil {
+			y = t2.Val
 		}
 
 		sum := carry + x + y
 		carry = sum / 10
 
 		rightChild := new(ListNode)
-		leftChild.Val = sum % 10
-		leftChild.Next = rightChild
-		leftChild = rightChild
+		rightChild.Val = sum % 10
+		curr.Next = rightChild
+		curr = curr.Next
 
-		if l1 != nil {
-			l1 = l1.Next
+		if t1 != nil {
+			t1 = t1.Next
 		}
-		if l2 != nil {
-			l2 = l2.Next
+		if t2 != nil {
+			t2 = t2.Next
+		}
+		if t1 == nil && t2 == nil && carry > 0 {
+			endCarry = 1
 		}
 	}
 
-	if carry > 0 {
+	if endCarry > 0 {
 		rightChild := new(ListNode)
 		rightChild.Val = carry
-		leftChild.Next = rightChild
+		curr.Next = rightChild
 	}
 
-	return curr.Next
+	return dummyHead.Next
 }
 
 // 第一想法，这个不太好
