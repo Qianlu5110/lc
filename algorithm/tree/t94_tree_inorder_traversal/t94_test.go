@@ -4,7 +4,7 @@
 # @Author : Qian Lu
 */
 
-package tree_inorder_traversal
+package t94_tree_inorder_traversal
 
 import (
 	"fmt"

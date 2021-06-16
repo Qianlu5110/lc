@@ -4,7 +4,7 @@
 # @Author : Qian Lu
 */
 
-package tree_inorder_traversal
+package t94_tree_inorder_traversal
 
 /**
 给定一个二叉树，返回它的中序 遍历。
